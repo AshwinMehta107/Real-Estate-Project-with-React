@@ -6,12 +6,12 @@ const Projects = () => {
 
    const [currentIndex ,setCurrentIndex ] = useState(0);
    const [cardsToShow , setCardsToShow] = useState(() =>
-      window.innerWidth >= 640 ? 4 : 1
+      window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1
    );
   
    useEffect(() => {
       const updateCardsToShow = () => {
-         const nextCardsToShow = window.innerWidth >= 640 ? 4 : 1;
+         const nextCardsToShow = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
          setCardsToShow((current) =>
             current === nextCardsToShow ? current : nextCardsToShow
          );
@@ -47,22 +47,21 @@ const Projects = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
 
-      className='container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden'
+      className='container mx-auto py-24 px-6 md:px-12 lg:px-20 w-full overflow-hidden'
       id='Projects'
     >
-      <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
-        Projects <span>Completed</span>
-      </h1>
-      <p className='text-center text-gray-500 mb-8 max-w-80 mx-auto'>
-        Crafting Spaces,Building Legacies-Explore Our Portfolio
-      </p>
+      <div className='flex flex-col items-center text-center'>
+        <p className='section-kicker mb-4'>Selected residences</p>
+        <h2 className='font-display text-4xl sm:text-5xl'>Spaces with a sense of place.</h2>
+        <p className='mt-4 max-w-md leading-7 text-slate-500'>A selection of homes defined by light, character, and connection to their surroundings.</p>
+      </div>
 
       {/* Slider Buttons */}
 
-      <div className='flex justify-end items-center mb-8'>
+      <div className='flex justify-end items-center gap-2 mb-8'>
         <button
           onClick={prevProject}
-          className='p-3 bg-gray-200 rounded mr-2'
+          className='rounded-full border border-slate-200 p-3 transition hover:border-[#18324a] hover:bg-[#18324a] hover:brightness-0 hover:invert'
           aria-label='Previous Project'
         >
           <img src={assets.left_arrow} alt='Previous' />
@@ -70,7 +69,7 @@ const Projects = () => {
 
         <button
           onClick={nextProject}
-          className='p-3 bg-gray-200 rounded mr-2'
+          className='rounded-full border border-slate-200 p-3 transition hover:border-[#18324a] hover:bg-[#18324a] hover:brightness-0 hover:invert'
           aria-label='Next Project'
         >
           <img src={assets.right_arrow} alt='Next' />
@@ -80,32 +79,32 @@ const Projects = () => {
       {/* project slider container  */}
       <div className='overflow-hidden'>
         <div
-          className='flex gap-8 transition-transform duration-500 ease-in-out'
+          className='flex gap-5 transition-transform duration-500 ease-in-out'
           style={{
             transform: `translateX(-${(Math.min(currentIndex, lastIndex) * 100) / cardsToShow}%)`,
           }}
         >
           {projectsData.map((project, index) => (
-            <div key={index} className='relative flex-shrink-0 w-full sm:w-1/4'>
+            <article key={index} className='group relative flex-shrink-0 w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]'>
               <img
                 src={project.image}
                 alt={project.title}
-                className='w-full h-auto motion-safe:mb-14'
+                className='h-[390px] w-full object-cover transition duration-500 group-hover:scale-[1.02]'
               />
 
-              <div className='absolute left-0 right-0  bottom-5 flex justify-center'>
-                <div className='inline-block bg-white w-3/4 px-4 py-4 shadow-md'>
-                  <h2 className='text-xl font-semibold text-gray-800'>
+              <div className='absolute inset-x-0 bottom-0 flex justify-center px-4'>
+                <div className='w-full translate-y-5 bg-white px-5 py-5 shadow-lg transition duration-300 group-hover:translate-y-2'>
+                  <p className='mb-1 text-xs font-bold uppercase tracking-[.16em] text-[#bd7b46]'>For sale</p>
+                  <h3 className='font-display text-2xl text-[#18324a]'>
                     {project.title}
-                  </h2>
+                  </h3>
 
-                  <p className='text-gray-500 text-sm'>
-                    {project.price} <span className='px-1'></span>{" "}
-                    {project.location}
+                  <p className='mt-1 text-sm text-slate-500'>
+                    {project.price} <span className='px-1 text-[#bd7b46]'>•</span> {project.location}
                   </p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

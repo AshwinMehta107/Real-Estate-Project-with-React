@@ -1,43 +1,35 @@
-import React from 'react'
-import {assets} from '../assets/assets.js'
+import { assets } from '../assets/assets.js'
 
-const Footer = () => {
-  return (
-    <div className='pt-10 px-4 md:px-20  lg:px-32 bg-gray-900 w-full overflow-hidden' id='Footer'>
-      <div className='container mx-auto flex flex-col md:flex-row justify-between items-start'>
-        <div className='w-full md:w-1/3 mb-8 md:mb-0'>
-
-
-            <img src={assets.logo_dark} alt="" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A iusto enim excepturi quae sed esse repellendus placeat molestias? Deserunt illo sit quod omnis laborum, repellat modi quis et exercitationem ea!</p>
-        </div>
-
-        <div>
-            <h3 className='text-white text-lg font-bold mb-4'>Company</h3>
-            <ul>
-                <a href="#Header" className='hover:text-white'>Home</a>
-
-                <a href="#About" className='hover:text-white'>About Us</a>
-
-                <a href="#Contact" className='hover:text-white'>Contact Us</a>
-
-                <a href="#" className='hover:text-white'>Privacy Policy</a>
-            </ul>
-        </div>
-        <div className='w-full md:w-1/3'>
-       <h3 className='text-white text-lg font-bold mb-4'>Subscribe to Our newsletter</h3>
-       <p className='text-gray-400 mb-4 max-w-80'>The latest news.article, and resources,sent to your inbox weekly</p>
-       <div className='flex gap-2'>
-        <input type="email" placeholder = "Enter your email" className='p-2 rounded bg-gray-800 text-gray-400 border border-gray-700 focus:outline-none w-full md:w-auto' />
-        <button className='py-2 px-4 rounded bg-blue-500' >Subscribe</button>
-       </div>
-        </div>
+const Footer = () => (
+  <footer className='w-full overflow-hidden bg-[#102a43] px-6 pt-16 md:px-12 lg:px-20' id='Footer'>
+    <div className='container mx-auto grid gap-12 md:grid-cols-[1.25fr_.65fr_1fr]'>
+      <div>
+        <img src={assets.logo_dark} alt='Aster & Co.' className='h-8 w-auto' />
+        <p className='mt-6 max-w-sm leading-7 text-slate-300'>Thoughtful guidance for people looking for more than square footage. Find a home that supports the life you want to lead.</p>
       </div>
-    <div className='border-t border-gray-700 py-4 mt-10 text-center text-gray-500'>
-      Copyright 2026 © Ashwin Mehta ALL Right Reserved. 
+      <div>
+        <h3 className='mb-5 text-sm font-bold uppercase tracking-[.15em] text-white'>Explore</h3>
+        <ul className='space-y-3 text-slate-300'>
+          <li><a href='#Header' className='transition hover:text-[#e7c7a5]'>Home</a></li>
+          <li><a href='#About' className='transition hover:text-[#e7c7a5]'>Our approach</a></li>
+          <li><a href='#Projects' className='transition hover:text-[#e7c7a5]'>Residences</a></li>
+          <li><a href='#Contact' className='transition hover:text-[#e7c7a5]'>Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 className='mb-5 text-sm font-bold uppercase tracking-[.15em] text-white'>Notes from Aster</h3>
+        <p className='mb-5 max-w-80 leading-6 text-slate-300'>Occasional property inspiration and local insights, delivered with care.</p>
+        <form className='flex border-b border-white/30 pb-2' onSubmit={(event) => event.preventDefault()}>
+          <input type='email' aria-label='Email address' placeholder='Your email address' className='min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-400' />
+          <button className='text-sm font-semibold text-[#e7c7a5] transition hover:text-white' type='submit'>Subscribe →</button>
+        </form>
+      </div>
     </div>
+    <div className='container mx-auto mt-14 flex flex-col gap-2 border-t border-white/15 py-6 text-sm text-slate-400 sm:flex-row sm:justify-between'>
+      <p>© 2026 Aster & Co. All rights reserved.</p>
+      <p>Made for considered living.</p>
     </div>
-  )
-}
+  </footer>
+)
 
 export default Footer

@@ -5,22 +5,25 @@ import { motion } from "motion/react";
 const Header = () => {
   return (
     <div
-      className='min-h-screen mb-4 bg-cover bg-center flex items-center w-full overflow-hidden'
+      className='relative min-h-[720px] h-screen bg-cover bg-center flex items-center w-full overflow-hidden'
       style={{ backgroundImage: "url('/header_img.png')" }}
       id='Header'>
         
         <Navbar/>
+        <div className='absolute inset-0 hero-overlay' />
         <motion.div
-        initial = {{opacity:0 , x:100}}
+        initial = {{opacity:0 , y:40}}
         transition = {{duration: 1}}
         whileInView={{opacity:1,y:0}}
         viewport={{once: true}}
-         className='container text-center mx-auto py-4 px-6 md:px-20 lg:px-32 text-white'>
-            <h2 className='text-5xl sm:text-6xl md:text-[82px] inline-block max-w-3xl font-semibold'>Explore homes that fit your dreams</h2>
+         className='container relative mx-auto px-6 md:px-12 lg:px-20 text-white'>
+            <p className='section-kicker mb-6 text-[#e7c7a5]'>Curated living, beautifully considered</p>
+            <h1 className='font-display text-5xl leading-[1.04] sm:text-6xl md:text-8xl max-w-4xl'>Find a place that feels <i>entirely</i> yours.</h1>
+            <p className='mt-7 max-w-xl text-base leading-7 text-white/80 md:text-lg'>We pair thoughtful local expertise with an uncompromising eye for homes worth coming back to.</p>
 
-            <div className='space-x-6 mt-16'>
-                <a href="#Projects" className='border  border-white px-8 py-3 rounded'>Projects</a>
-                <a href="#Contact" className='bg-blue-500 px-8 py-3 rounded'>Contact us</a>
+            <div className='flex flex-wrap gap-4 mt-10'>
+                <a href="#Projects" className='rounded-full bg-[#e7c7a5] px-7 py-3.5 font-semibold text-[#17324a] transition hover:bg-white'>Explore residences <span aria-hidden='true'>↗</span></a>
+                <a href="#Contact" className='rounded-full border border-white/70 px-7 py-3.5 font-semibold transition hover:bg-white hover:text-[#17324a]'>Talk to an advisor</a>
             </div>
             
         </motion.div>
